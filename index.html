@@ -797,7 +797,7 @@ function moveSession(id,newDate){
     +'REGOLE: 1)Mai corsa intensa back-to-back 2)Lungo mai seguito da corsa 3)Forza dopo easy mai dopo lungo 4)Max 4 sessioni/sett 5)Mantieni progressione fisiologica\n'
     +'Rispondi SOLO JSON: {"cascade":[{"id":"...","newDate":"YYYY-MM-DD"}],"explanation":"breve spiegazione italiano"}';
 
-  fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+GEMINI_KEY,{
+  fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+GEMINI_KEY,{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({contents:[{parts:[{text:prompt}]}],generationConfig:{maxOutputTokens:1200,temperature:.2}})
   }).then(function(r){return r.json()}).then(function(data){
@@ -1161,7 +1161,7 @@ function sendCoach(preset){
     +'Peso storico: '+STATE.weights.slice(-5).map(function(w){return w.date+':'+w.value+'kg';}).join(', ')+'\n\n'
     +'Domanda di Sosa: '+msg;
 
-  fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key='+GEMINI_KEY,{
+  fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key='+GEMINI_KEY,{
     method:'POST',
     mode:'cors',
     headers:{'Content-Type':'application/json'},
